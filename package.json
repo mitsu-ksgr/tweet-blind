@@ -1,0 +1,19 @@
+{
+  "name": "tweet-blind",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fmt": "prettier --check ./**/*.{js,css}",
+    "fmt-fix": "prettier --write ./**/*.{js,css}",
+    "lint": "eslint *.js .",
+    "lint-fix": "eslint --fix *.js",
+    "checkonly": "yarn fmt && yarn lint",
+    "fix": "yarn fmt-fix && yarn lint-fix"
+  },
+  "devDependencies": {
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.0",
+    "prettier": "^3.4.0"
+  }
+}

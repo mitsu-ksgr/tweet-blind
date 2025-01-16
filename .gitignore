@@ -1,4 +1,11 @@
-
 # Firefox extension package
 *.xpi
+
+# node
+node_modules
+/build
+/package
+.env
+.env.*
+!.env.example
 
