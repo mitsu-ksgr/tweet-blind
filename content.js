@@ -5,6 +5,7 @@
  *****************************************************************************/
 
 const HiddenTweetKeys = "hidden_tweets";
+const AutoReleasePeriod = 24 * 7; // [hour] default 1 week
 
 const TweetBlindButtonClassName = "btn-blind-tweet";
 const TemporaryTweetClassName = "temp-tweet";
@@ -26,7 +27,7 @@ const blinder = new (class {
     console.log("----- Hidden Tweet List -----");
     for (let i = 0; i < hts.length; ++i) {
       const ht = hts[i];
-      console.log(`ID: ${ht.id} (${ht.ts})`);
+      console.log(`ID: ${ht.id} (${new Date(ht.ts).toISOString()})`);
     }
     console.log("-----------------------------");
   }
@@ -48,8 +49,30 @@ const blinder = new (class {
   }
 })();
 
+
 //-----------------------------------------------------------------------------
-// Helpers
+// Auto release
+//-----------------------------------------------------------------------------
+function hasHoursPassed(timestamp, n_hour) {
+  const now = Date.now();
+  const n = n_hour * 60 * 60 * 1000;
+  return now - timestamp >= n;
+}
+
+function autoRelease() {
+  const hts = blinder.allHiddenTweets();
+
+  for (let i = 0; i < hts.length; ++i) {
+    const ht = hts[i];
+
+    if (hasHoursPassed(ht.ts, AutoReleasePeriod)) {
+      blinder.releaseTweet(ht.id);
+    }
+  }
+}
+
+//-----------------------------------------------------------------------------
+// Element maker
 //-----------------------------------------------------------------------------
 function makeTweetBlindButton(listener) {
   const div = document.createElement("div");
@@ -168,6 +191,7 @@ function addBlindButtonToTweetElement() {
 // Content functions.
 //-----------------------------------------------------------------------------
 function update() {
+  autoRelease();
   addBlindButtonToTweetElement();
 }
 
