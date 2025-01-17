@@ -1,5 +1,5 @@
-TweetBlind for TweetDeck
-==========================
+Tweet Blind
+===========
 
 Chrome extension.
 Blind the shitty tweet from your timeline.
@@ -8,7 +8,6 @@ Blind the shitty tweet from your timeline.
 ## Todo
 - Support Firefox
 - Persistence of blocklist
-
 
 
 ## Installation
@@ -27,6 +26,23 @@ TODO: Currently, this extension does not seem to work in firefox 🤔
 
 ```sh
 $ cd PROJECT_DIR
-$ zip -r ./TweetBlind4TweetDeck.xpi ./*
+$ zip -r ./TweetBlind.xpi ./*
+```
+
+
+## Developments
+### Formatter / Linter
+
+The following files are used only by the formatter/linter.
+
+- package.json
+- Dockerfile
+
+We can run formatter/linter in a docker container.
+do.sh is a helper script for this.
+
+```sh
+$ do.sh
+> run formmater and linter.
 ```
 

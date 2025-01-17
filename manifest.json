@@ -1,14 +1,17 @@
 {
-  "manifest_version": 2,
-  "version": "0.1",
+  "manifest_version": 3,
+  "version": "0.2",
 
-  "name": "TweetBlind for TweetDeck",
+  "name": "TweetBlind",
   "description": "Blind the shitty tweet from your timeline.",
+
+  "permissions": ["scripting"],
+  "host_permissions": ["*://x.com/*"],
 
   "content_scripts": [
     {
-      "matches": ["https://tweetdeck.twitter.com/"],
-      "js": ["script.js"]
+      "matches": ["*://x.com/*"],
+      "js": ["content.js"]
     }
   ]
 }
