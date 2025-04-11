@@ -125,9 +125,11 @@ function getTweetIdFromArticle(article) {
 
 function addBlindButtonToTweetElement() {
   //const tl = document.querySelector('[aria-label="Home timeline"]');
-  const tl = document.querySelector(
+  const tl_selectors = [
     '[aria-label="Timeline: Your Home Timeline"]',
-  );
+    '[aria-label="タイムライン: ホームタイムライン"]'
+  ].join(',');
+  const tl = document.querySelector(tl_selectors);
   if (!tl) return;
 
   const hts = blinder.allHiddenTweets();

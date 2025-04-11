@@ -9,9 +9,12 @@ Blind the shitty tweet from your timeline.
 - Support Firefox
 - Persistence of blocklist
 
+## Support languages
+- en
+- ja
 
 ## Installation
-### Google Chrome
+### Google Chrome, Vivaldi
 
 - Download/git clone this project
 - Goto chrome://extensions/
